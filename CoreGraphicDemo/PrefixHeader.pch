@@ -18,7 +18,9 @@ typedef NS_ENUM(NSInteger, GradientType){
     GradientTypeColorLinear = 0,
     GradientTypeAlphaLinear,
     GradientTypeColorRadial,
-    GradientTypeAlphaRadial
+    GradientTypeAlphaRadial,
+    GradientTypeShapeAxial,
+    GradientTypeShapeRadial
 };
 
 

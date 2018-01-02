@@ -38,6 +38,10 @@
         type = GradientTypeColorRadial;
     }else if (row == 3){
         type = GradientTypeAlphaRadial;
+    }else if (row == 4){
+        type = GradientTypeShapeAxial;
+    }else if (row == 5){
+        type = GradientTypeShapeRadial;
     }
     
     DetailViewController *vc = [[DetailViewController alloc] initWithType:type];

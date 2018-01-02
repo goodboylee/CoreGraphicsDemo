@@ -46,12 +46,12 @@
         vc.type = UsageTypePatterns;
     }else if (indexPath.row == 3){
         vc.type = UsageTypeShadows;
-    }else if (indexPath.row == 4){
+    }else if (indexPath.row == 4 || indexPath.row == 5){
         GradientListTableViewController *vc = [[GradientListTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        vc.datas = [@[@"ColorLinear", @"AlphaLinear",@"ColorRadial",@"AlphaRadial",] mutableCopy];
+        vc.datas = [@[@"ColorLinear", @"AlphaLinear",@"ColorRadial",@"AlphaRadial", @"shapeAxial", @"shapeRadial"] mutableCopy];
         [self.navigationController pushViewController:vc animated:YES];
         return;
-    }else if (indexPath.row == 5){
+    }else if (indexPath.row == 6){
         
     }
     [self.navigationController pushViewController:vc animated:YES];
