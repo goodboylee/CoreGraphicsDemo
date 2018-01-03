@@ -11,6 +11,8 @@
 #import "ClipVIew.h"
 #import "PatternView.h"
 #import "ShadowView.h"
+#import "TransparentView.h"
+#import "SubImageView.h"
 
 
 CGContextRef myConctext(size_t width, size_t height){
@@ -19,7 +21,7 @@ CGContextRef myConctext(size_t width, size_t height){
     size_t bytesPerRow = width * 4;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateWithName(kCGColorSpaceGenericRGB);
     CGContextRef context = CGBitmapContextCreate(NULL, width, height, bitsPerComponent, bytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast);
-
+    CGColorSpaceRelease(colorSpace);
     return context;
 }
 
@@ -28,7 +30,7 @@ UIImage *customImage(void){
     CGContextTranslateCTM(context, 0, 200);
     CGContextScaleCTM(context, 1, -1);
 
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(200, 200), YES, [UIScreen mainScreen].scale);
+//    UIGraphicsBeginImageContextWithOptions(CGSizeMake(200, 200), YES, [UIScreen mainScreen].scale);
 //    CGContextRef context = UIGraphicsGetCurrentContext();
 
     CGContextSetRGBFillColor(context, 0, 0, 1, 1);
@@ -43,7 +45,7 @@ UIImage *customImage(void){
 
 //    UIGraphicsEndImageContext();
     CGContextRelease(context);
-
+    CGImageRelease(image);
     return img;
 }
 
@@ -73,7 +75,7 @@ UIImage *customImage(void){
 //
 //    CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
 //    CGContextFillRect(context, CGRectMake(0, 0, 100, 100));
-//    CGContextRotateCTM(context, -(300 * M_PI / 180));
+////    CGContextRotateCTM(context, -(300 * M_PI / 180));
 ////    CGContextScaleCTM(context, 0.5, 0.5);
 //    CGContextDrawImage(context, CGRectMake(0, 0, 100, 100), [UIImage imageNamed:@"rooster.jpg"].CGImage);
 //    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
@@ -96,6 +98,10 @@ UIImage *customImage(void){
         [self addPatternView];
     }else if (_type == UsageTypeShadows){
         [self addShadowView];
+    }else if (_type == UsageTypeTransparentLayer){
+        [self addTransparentLayerView];
+    }else if (_type == UsageTypeSubImage){
+        [self addSubimageView];
     }
 }
 
@@ -117,6 +123,15 @@ UIImage *customImage(void){
 - (void)addShadowView{
     ShadowView *view = [[ShadowView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:view];
+}
+- (void)addTransparentLayerView{
+    TransparentView *view = [[TransparentView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:view];
+}
+-(void)addSubimageView{
+    SubImageView *view = [[SubImageView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:view];
+
 }
 
 

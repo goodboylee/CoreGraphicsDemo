@@ -52,7 +52,9 @@
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }else if (indexPath.row == 6){
-        
+        vc.type = UsageTypeTransparentLayer;
+    }else if (indexPath.row == 7){
+        vc.type = UsageTypeSubImage;
     }
     [self.navigationController pushViewController:vc animated:YES];
 }
