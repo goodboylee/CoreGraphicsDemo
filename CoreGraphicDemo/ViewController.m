@@ -129,7 +129,9 @@ UIImage *customImage(void){
     [self.view addSubview:view];
 }
 -(void)addSubimageView{
-    SubImageView *view = [[SubImageView alloc] initWithFrame:self.view.bounds];
+    CGSize size = [UIScreen mainScreen].bounds.size;
+    CGRect rect = CGRectMake(0, 100, size.width, size.height - 100);
+    SubImageView *view = [[SubImageView alloc] initWithFrame:rect];
     [self.view addSubview:view];
 
 }
