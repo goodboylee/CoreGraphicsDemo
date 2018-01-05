@@ -105,30 +105,18 @@ void myDrawFlag (CGContextRef context, CGRect* contextRect)
 - (void)drawRect:(CGRect)rect {
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-//
-//    CGImageRef cgImage = [self CGImageWithName:@"rooster.jpg"];
-//    CGImageRef clipImage = CGImageCreateWithImageInRect(cgImage, CGRectMake(100, 100, 100, 100));
-//    //CGContextDrawImage(context, CGRectMake(100, 100, 80, 80), clipImage);
-//    [[UIImage imageWithCGImage:clipImage] drawInRect:CGRectMake(100, 100, 80, 80)];
-//    
-//    
-//    
-//    CGImageRelease(cgImage);
-//    CGImageRelease(clipImage);
+
+    CGImageRef cgImage = [self CGImageWithName:@"rooster.jpg"];
+    CGImageRef clipImage = CGImageCreateWithImageInRect(cgImage, CGRectMake(100, 100, 100, 100));
+    //CGContextDrawImage(context, CGRectMake(100, 100, 80, 80), clipImage);
+    [[UIImage imageWithCGImage:clipImage] drawInRect:CGRectMake(100, 100, 80, 80)];
+    
+    
+    
+    CGImageRelease(cgImage);
+    CGImageRelease(clipImage);
     
 //    myDrawFlag(context, &rect);
-    
-    
-    CGPoint points[] = {{10, 10}, {100, 10}, {10, 100}};
-    CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);
-    CGContextSetStrokeColorWithColor(context, [UIColor yellowColor].CGColor);
-    CGContextSetLineWidth(context, 5);
-    CGContextSetLineJoin(context, kCGLineJoinMiter);
-    
-    CGContextAddLines(context, points, 3);
-//    CGContextClosePath(context);
-//    CGContextStrokePath(context);
-    CGContextFillPath(context);
     
 }
 

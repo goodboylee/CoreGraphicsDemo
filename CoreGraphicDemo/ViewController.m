@@ -13,6 +13,7 @@
 #import "ShadowView.h"
 #import "TransparentView.h"
 #import "SubImageView.h"
+#import "LayerView.h"
 
 
 CGContextRef myConctext(size_t width, size_t height){
@@ -102,6 +103,8 @@ UIImage *customImage(void){
         [self addTransparentLayerView];
     }else if (_type == UsageTypeSubImage){
         [self addSubimageView];
+    }else if (_type == UsageTypeCGLayer){
+        [self addLayerView];
     }
 }
 
@@ -133,7 +136,11 @@ UIImage *customImage(void){
     CGRect rect = CGRectMake(0, 100, size.width, size.height - 100);
     SubImageView *view = [[SubImageView alloc] initWithFrame:rect];
     [self.view addSubview:view];
+}
 
+- (void)addLayerView{
+    LayerView *view = [[LayerView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100)];
+    [self.view addSubview:view];
 }
 
 

@@ -55,6 +55,8 @@
         vc.type = UsageTypeTransparentLayer;
     }else if (indexPath.row == 7){
         vc.type = UsageTypeSubImage;
+    }else if (indexPath.row == 8){
+        vc.type = UsageTypeCGLayer;
     }
     [self.navigationController pushViewController:vc animated:YES];
 }
