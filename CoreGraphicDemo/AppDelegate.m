@@ -21,7 +21,7 @@
     UINavigationController *nav = (UINavigationController *)self.window.rootViewController;
     MainTableViewController *mainVC = (MainTableViewController *)nav.topViewController;
     mainVC.datas = [@[@"EORule Usage", @"Clip Usage", @"Patterns  Usage", @"Shadows Usage", @"Gradient Usage", @"ShapeGradient Usage", @"TransparentLayer  Usage",
-                      @"Subimage Usage", @"CGLayer Usage"] mutableCopy];
+                      @"Subimage Usage", @"CGLayer Usage", @"PDF Usage"] mutableCopy];
     return YES;
 }
 

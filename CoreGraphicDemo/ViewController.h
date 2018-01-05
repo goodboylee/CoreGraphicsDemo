@@ -16,7 +16,8 @@ typedef  NS_ENUM(NSInteger, UsageType){
     UsageTypeShadows,
     UsageTypeTransparentLayer,
     UsageTypeSubImage,
-    UsageTypeCGLayer
+    UsageTypeCGLayer,
+    UsageTypePDF
 };
 @interface ViewController : UIViewController
 

@@ -57,6 +57,8 @@
         vc.type = UsageTypeSubImage;
     }else if (indexPath.row == 8){
         vc.type = UsageTypeCGLayer;
+    }else if (indexPath.row == 9){
+        vc.type = UsageTypePDF;
     }
     [self.navigationController pushViewController:vc animated:YES];
 }

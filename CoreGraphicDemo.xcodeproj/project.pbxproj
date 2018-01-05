@@ -10,6 +10,8 @@
 		AD2D968B1FFC754B008BC598 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2D968A1FFC754B008BC598 /* TransparentView.m */; };
 		AD2D968F1FFCCB6D008BC598 /* SubImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2D968E1FFCCB6D008BC598 /* SubImageView.m */; };
 		AD4CE0251FFF03CE0096D2D3 /* LayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4CE0241FFF03CE0096D2D3 /* LayerView.m */; };
+		AD4CE0271FFF65870096D2D3 /* Blocks 编程要点.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AD4CE0261FFF65860096D2D3 /* Blocks 编程要点.pdf */; };
+		AD4CE02B1FFF675D0096D2D3 /* PDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4CE02A1FFF675D0096D2D3 /* PDFView.m */; };
 		AD633B941FE1131100000420 /* BasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD633B931FE1131100000420 /* BasicTableViewController.m */; };
 		AD633B971FE113E700000420 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD633B961FE113E700000420 /* MainTableViewController.m */; };
 		AD633B9F1FE1289500000420 /* ClipVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = AD633B9E1FE1289500000420 /* ClipVIew.m */; };
@@ -36,6 +38,9 @@
 		AD2D968E1FFCCB6D008BC598 /* SubImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubImageView.m; sourceTree = "<group>"; };
 		AD4CE0231FFF03CE0096D2D3 /* LayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayerView.h; sourceTree = "<group>"; };
 		AD4CE0241FFF03CE0096D2D3 /* LayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayerView.m; sourceTree = "<group>"; };
+		AD4CE0261FFF65860096D2D3 /* Blocks 编程要点.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Blocks 编程要点.pdf"; sourceTree = "<group>"; };
+		AD4CE0291FFF675D0096D2D3 /* PDFView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFView.h; sourceTree = "<group>"; };
+		AD4CE02A1FFF675D0096D2D3 /* PDFView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFView.m; sourceTree = "<group>"; };
 		AD633B921FE1131100000420 /* BasicTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewController.h; sourceTree = "<group>"; };
 		AD633B931FE1131100000420 /* BasicTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicTableViewController.m; sourceTree = "<group>"; };
 		AD633B951FE113E700000420 /* MainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
@@ -107,6 +112,15 @@
 				AD4CE0241FFF03CE0096D2D3 /* LayerView.m */,
 			);
 			path = CGLayer;
+			sourceTree = "<group>";
+		};
+		AD4CE0281FFF65960096D2D3 /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				AD4CE0291FFF675D0096D2D3 /* PDFView.h */,
+				AD4CE02A1FFF675D0096D2D3 /* PDFView.m */,
+			);
+			path = PDF;
 			sourceTree = "<group>";
 		};
 		AD633B9B1FE1206400000420 /* EORule */ = {
@@ -188,6 +202,7 @@
 				AD633B961FE113E700000420 /* MainTableViewController.m */,
 				ADD1F7FB1FD912DA00FD23F2 /* ViewController.h */,
 				ADD1F7FC1FD912DA00FD23F2 /* ViewController.m */,
+				AD4CE0281FFF65960096D2D3 /* PDF */,
 				AD4CE0221FFF03B90096D2D3 /* CGLayer */,
 				AD2D968C1FFCCB51008BC598 /* SubImage */,
 				AD2D96881FFC74FB008BC598 /* Transparent Layer */,
@@ -203,6 +218,7 @@
 				ADD1F8071FD912DA00FD23F2 /* main.m */,
 				ADD695B01FE3D12B00E613CB /* PrefixHeader.pch */,
 				AD633BA01FE13EEF00000420 /* rooster.jpg */,
+				AD4CE0261FFF65860096D2D3 /* Blocks 编程要点.pdf */,
 			);
 			path = CoreGraphicDemo;
 			sourceTree = "<group>";
@@ -267,6 +283,7 @@
 			files = (
 				AD633BA11FE13EF000000420 /* rooster.jpg in Resources */,
 				ADD1F8051FD912DA00FD23F2 /* LaunchScreen.storyboard in Resources */,
+				AD4CE0271FFF65870096D2D3 /* Blocks 编程要点.pdf in Resources */,
 				ADD1F8021FD912DA00FD23F2 /* Assets.xcassets in Resources */,
 				ADD1F8001FD912DA00FD23F2 /* Main.storyboard in Resources */,
 			);
@@ -280,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD7F93751FE295240039D630 /* GradientView.m in Sources */,
+				AD4CE02B1FFF675D0096D2D3 /* PDFView.m in Sources */,
 				AD7F93721FE26C740039D630 /* ShadowView.m in Sources */,
 				AD633B941FE1131100000420 /* BasicTableViewController.m in Sources */,
 				AD7F93791FE298C70039D630 /* ShapeGradientView.m in Sources */,
