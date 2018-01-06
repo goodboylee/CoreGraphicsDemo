@@ -9,6 +9,7 @@
 #import "MainTableViewController.h"
 #import "ViewController.h"
 #import "GradientListTableViewController.h"
+#import "PDFBrowserCollectionViewController.h"
 
 @interface MainTableViewController ()
 
@@ -58,7 +59,9 @@
     }else if (indexPath.row == 8){
         vc.type = UsageTypeCGLayer;
     }else if (indexPath.row == 9){
-        vc.type = UsageTypePDF;
+        PDFBrowserCollectionViewController *vc = (PDFBrowserCollectionViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"PDFBrowserCollectionViewController"];
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
     }
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -6,7 +6,10 @@
 //  Copyright © 2017年 lotus. All rights reserved.
 //
 
+//VC
 #import "ViewController.h"
+
+//views
 #import "MyView.h"
 #import "ClipVIew.h"
 #import "PatternView.h"
@@ -14,7 +17,6 @@
 #import "TransparentView.h"
 #import "SubImageView.h"
 #import "LayerView.h"
-#import "PDFView.h"
 
 
 CGContextRef myConctext(size_t width, size_t height){
@@ -106,8 +108,6 @@ UIImage *customImage(void){
         [self addSubimageView];
     }else if (_type == UsageTypeCGLayer){
         [self addLayerView];
-    }else if (_type == UsageTypePDF){
-        [self addPDFView];
     }
 }
 
@@ -143,10 +143,6 @@ UIImage *customImage(void){
 
 - (void)addLayerView{
     LayerView *view = [[LayerView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100)];
-    [self.view addSubview:view];
-}
-- (void)addPDFView{
-    PDFView *view = [[PDFView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100)];
     [self.view addSubview:view];
 }
 

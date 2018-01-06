@@ -8,18 +8,34 @@
 
 #import "PDFView.h"
 
+@interface PDFView()
+{
+    CGPDFDocumentRef _docment;
+    size_t _pageNumber;
+}
+@end;
 @implementation PDFView
 
-
+- (id)initWithFrame:(CGRect)frame pdfDocument:(CGPDFDocumentRef)pdfDocument pageNumber:(size_t)pageNumber{
+    self = [super initWithFrame:frame];
+    if (self) {
+        _docment = pdfDocument;
+        _pageNumber = pageNumber;
+    }
+    return self;
+}
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
+    //get the page
+    CGPDFPageRef page = CGPDFDocumentGetPage(_docment, _pageNumber);
+    if (page == NULL) {
+        NSLog(@"the page is not exist.");
+        return;
+    }
     
     //create the context use the rgba color space
     CGContextRef context = UIGraphicsGetCurrentContext();
-    if (context == NULL) {
-        return;
-    }
     
     //fill the background color to yellowColor
     CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
@@ -29,32 +45,13 @@
     CGContextTranslateCTM(context, 0, rect.size.height);
     CGContextScaleCTM(context, 1, -1);
     
-    //create pdf document
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"Blocks 编程要点.pdf" withExtension:nil];
-    if (url == nil) {
-        NSLog(@"the url is not exist.");
-        return;
-    }
-    CFURLRef pdfURL = (__bridge_retained CFURLRef)url;
-    CGPDFDocumentRef pdfDocument = CGPDFDocumentCreateWithURL(pdfURL);
-    
-    size_t pdfNums = CGPDFDocumentGetNumberOfPages(pdfDocument);
-    NSLog(@"total pdf numbers is %d", (int)pdfNums);
-    
-    //get the page
-    CGPDFPageRef page = CGPDFDocumentGetPage(pdfDocument, 3);
-    
     CGContextSaveGState(context);
+    //creates an affine transform by mapping a box in a PDF page to a rectangle you specify
     CGAffineTransform transform = CGPDFPageGetDrawingTransform(page, kCGPDFMediaBox, self.bounds, 0, YES);
     CGContextConcatCTM(context, transform);
     CGContextClipToRect(context, CGPDFPageGetBoxRect(page, kCGPDFMediaBox));
     CGContextDrawPDFPage(context, page);
     CGContextRestoreGState(context);
-    
-    //release memory
-    CGPDFDocumentRelease(pdfDocument);
-    CFRelease(pdfURL);
-    
 }
 
 - (CGContextRef)createContextWithRect:(CGRect)rect{

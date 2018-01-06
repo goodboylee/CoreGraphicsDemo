@@ -10,4 +10,5 @@
 
 @interface PDFView : UIView
 
+- (id)initWithFrame:(CGRect)frame pdfDocument:(CGPDFDocumentRef)pdfDocument pageNumber:(size_t)pageNumber;
 @end
