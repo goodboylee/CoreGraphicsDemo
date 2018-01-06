@@ -44,6 +44,7 @@ static NSString * const reuseIdentifier = @"PDFCollectionViewCell";
     layout.itemSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT);
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
     self.collectionView.collectionViewLayout = layout;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
