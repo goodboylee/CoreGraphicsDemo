@@ -22,6 +22,8 @@
 		AD7F93721FE26C740039D630 /* ShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F93711FE26C740039D630 /* ShadowView.m */; };
 		AD7F93751FE295240039D630 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F93741FE295240039D630 /* GradientView.m */; };
 		AD7F93791FE298C70039D630 /* ShapeGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7F93781FE298C70039D630 /* ShapeGradientView.m */; };
+		AD8D6434200451C500D6A9E7 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8D6433200451C500D6A9E7 /* PDFViewController.m */; };
+		AD8D64372004557200D6A9E7 /* PDFDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8D64362004557200D6A9E7 /* PDFDataSource.m */; };
 		AD922EEE1FD93AB400F84F6D /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD922EED1FD93AB400F84F6D /* MyView.m */; };
 		ADD1F7FA1FD912DA00FD23F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD1F7F91FD912DA00FD23F2 /* AppDelegate.m */; };
 		ADD1F7FD1FD912DA00FD23F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD1F7FC1FD912DA00FD23F2 /* ViewController.m */; };
@@ -62,6 +64,10 @@
 		AD7F93741FE295240039D630 /* GradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		AD7F93771FE298C70039D630 /* ShapeGradientView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShapeGradientView.h; sourceTree = "<group>"; };
 		AD7F93781FE298C70039D630 /* ShapeGradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShapeGradientView.m; sourceTree = "<group>"; };
+		AD8D6432200451C500D6A9E7 /* PDFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFViewController.h; sourceTree = "<group>"; };
+		AD8D6433200451C500D6A9E7 /* PDFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFViewController.m; sourceTree = "<group>"; };
+		AD8D64352004557200D6A9E7 /* PDFDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFDataSource.h; sourceTree = "<group>"; };
+		AD8D64362004557200D6A9E7 /* PDFDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFDataSource.m; sourceTree = "<group>"; };
 		AD922EEC1FD93AB400F84F6D /* MyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
 		AD922EED1FD93AB400F84F6D /* MyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 		ADD1F7F51FD912DA00FD23F2 /* CoreGraphicDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreGraphicDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +117,17 @@
 			path = SubImage;
 			sourceTree = "<group>";
 		};
+		AD34C2D420030C0C009634DB /* CollectionViewWay */ = {
+			isa = PBXGroup;
+			children = (
+				AD6BAC572000B0490025245F /* PDFBrowserCollectionViewController.h */,
+				AD6BAC582000B0490025245F /* PDFBrowserCollectionViewController.m */,
+				AD6BAC5A2000B0B60025245F /* PDFCollectionViewCell.h */,
+				AD6BAC5B2000B0B60025245F /* PDFCollectionViewCell.m */,
+			);
+			path = CollectionViewWay;
+			sourceTree = "<group>";
+		};
 		AD4CE0221FFF03B90096D2D3 /* CGLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,10 +142,8 @@
 			children = (
 				AD4CE0291FFF675D0096D2D3 /* PDFView.h */,
 				AD4CE02A1FFF675D0096D2D3 /* PDFView.m */,
-				AD6BAC572000B0490025245F /* PDFBrowserCollectionViewController.h */,
-				AD6BAC582000B0490025245F /* PDFBrowserCollectionViewController.m */,
-				AD6BAC5A2000B0B60025245F /* PDFCollectionViewCell.h */,
-				AD6BAC5B2000B0B60025245F /* PDFCollectionViewCell.m */,
+				AD8D642E200449DD00D6A9E7 /* PageVC */,
+				AD34C2D420030C0C009634DB /* CollectionViewWay */,
 			);
 			path = PDF;
 			sourceTree = "<group>";
@@ -183,6 +198,17 @@
 				ADD695AF1FE3D10700E613CB /* GradientHeader.h */,
 			);
 			path = Gradient;
+			sourceTree = "<group>";
+		};
+		AD8D642E200449DD00D6A9E7 /* PageVC */ = {
+			isa = PBXGroup;
+			children = (
+				AD8D6432200451C500D6A9E7 /* PDFViewController.h */,
+				AD8D6433200451C500D6A9E7 /* PDFViewController.m */,
+				AD8D64352004557200D6A9E7 /* PDFDataSource.h */,
+				AD8D64362004557200D6A9E7 /* PDFDataSource.m */,
+			);
+			path = PageVC;
 			sourceTree = "<group>";
 		};
 		ADD1F7EC1FD912DA00FD23F2 = {
@@ -319,12 +345,14 @@
 				AD6BAC592000B0490025245F /* PDFBrowserCollectionViewController.m in Sources */,
 				AD6BAC5C2000B0B60025245F /* PDFCollectionViewCell.m in Sources */,
 				ADD695AE1FE3AE4000E613CB /* DetailViewController.m in Sources */,
+				AD8D6434200451C500D6A9E7 /* PDFViewController.m in Sources */,
 				ADD1F7FD1FD912DA00FD23F2 /* ViewController.m in Sources */,
 				AD2D968F1FFCCB6D008BC598 /* SubImageView.m in Sources */,
 				ADD1F8081FD912DA00FD23F2 /* main.m in Sources */,
 				ADD1F7FA1FD912DA00FD23F2 /* AppDelegate.m in Sources */,
 				AD4CE0251FFF03CE0096D2D3 /* LayerView.m in Sources */,
 				AD2D968B1FFC754B008BC598 /* TransparentView.m in Sources */,
+				AD8D64372004557200D6A9E7 /* PDFDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

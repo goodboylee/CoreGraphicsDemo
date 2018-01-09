@@ -12,8 +12,9 @@
 #import "PDFView.h"
 #import "PDFCollectionViewCell.h"
 
-#define NAVBAR_HEIGHT  self.navigationController.navigationBar.frame.size.height
-#define STATUSBAR_HEIGHT [UIApplication sharedApplication].statusBarFrame.size.height
+#define NAVBAR_HEIGHT       self.navigationController.navigationBar.frame.size.height
+#define STATUSBAR_HEIGHT    [UIApplication sharedApplication].statusBarFrame.size.height
+#define ITEM_SIZE           CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT)
 
 @interface PDFBrowserCollectionViewController ()<UICollectionViewDelegateFlowLayout>
 {
@@ -41,12 +42,11 @@ static NSString * const reuseIdentifier = @"PDFCollectionViewCell";
     
     NSLog(@"d %f", self.navigationController.navigationBar.frame.size.height);
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT);
+    layout.itemSize = ITEM_SIZE;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
     self.collectionView.collectionViewLayout = layout;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     
 }
 
@@ -72,7 +72,7 @@ static NSString * const reuseIdentifier = @"PDFCollectionViewCell";
     size_t totalNumber = CGPDFDocumentGetNumberOfPages(tempDoc);
     NSMutableArray <PDFView *>*tempPdfArr = [NSMutableArray array];
     for (size_t i = 1; i <= totalNumber; i++) {
-        PDFView *pdfView = [[PDFView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBAR_HEIGHT - NAVBAR_HEIGHT) pdfDocument:tempDoc pageNumber:i];
+        PDFView *pdfView = [[PDFView alloc] initWithFrame:(CGRect){CGPointZero, ITEM_SIZE} pdfDocument:tempDoc pageNumber:i];
         [tempPdfArr addObject:pdfView];
     }
     self.views = [tempPdfArr copy];

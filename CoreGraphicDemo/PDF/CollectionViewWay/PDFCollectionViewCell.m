@@ -36,7 +36,7 @@
 }
 
 - (void)configureSubviews{
-    UIScrollView *tempSclView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    UIScrollView *tempSclView = [[UIScrollView alloc] initWithFrame:self.contentView.bounds];
     tempSclView.showsVerticalScrollIndicator = NO;
     tempSclView.showsHorizontalScrollIndicator = NO;
     tempSclView.maximumZoomScale = 2;

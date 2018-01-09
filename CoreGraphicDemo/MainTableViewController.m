@@ -10,8 +10,9 @@
 #import "ViewController.h"
 #import "GradientListTableViewController.h"
 #import "PDFBrowserCollectionViewController.h"
+#import "PDFViewController.h"
 
-@interface MainTableViewController ()
+@interface MainTableViewController ()<UIPageViewControllerDataSource>
 
 @end
 
@@ -59,11 +60,36 @@
     }else if (indexPath.row == 8){
         vc.type = UsageTypeCGLayer;
     }else if (indexPath.row == 9){
-        PDFBrowserCollectionViewController *vc = (PDFBrowserCollectionViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"PDFBrowserCollectionViewController"];
-        [self.navigationController pushViewController:vc animated:YES];
+        //the first way to show pdf
+//        PDFBrowserCollectionViewController *vc = (PDFBrowserCollectionViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"PDFBrowserCollectionViewController"];
+//        [self.navigationController pushViewController:vc animated:YES];
+//        return;
+        
+        
+        
+        //the second way to show pdf
+//        UIPageViewController *pageVC = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:@{UIPageViewControllerOptionInterPageSpacingKey: @(0.0)/*, UIPageViewControllerOptionSpineLocationKey : @(UIPageViewControllerSpineLocationMin)*/}];
+        
+        UIPageViewController *pageVC = [self.storyboard instantiateViewControllerWithIdentifier:@"pageVC"];
+        pageVC.dataSource = self;
+        pageVC.view.backgroundColor = [UIColor whiteColor];
+        [pageVC setViewControllers:@[[PDFViewController pdfViewControllerForIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+            
+        }];
+        [self.navigationController pushViewController:pageVC animated:YES];
         return;
     }
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - UIPageViewController delegate
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(PDFViewController *)viewController{
+    NSInteger index = viewController.pageIndex;
+    return [PDFViewController pdfViewControllerForIndex:index - 1];
+}
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(PDFViewController *)viewController{
+    NSInteger index = viewController.pageIndex;
+    return [PDFViewController pdfViewControllerForIndex:index+1];
 }
 /*
 // Override to support conditional editing of the table view.
