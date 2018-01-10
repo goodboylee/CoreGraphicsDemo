@@ -68,9 +68,9 @@
         
         
         //the second way to show pdf
-//        UIPageViewController *pageVC = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:@{UIPageViewControllerOptionInterPageSpacingKey: @(0.0)/*, UIPageViewControllerOptionSpineLocationKey : @(UIPageViewControllerSpineLocationMin)*/}];
-        
         UIPageViewController *pageVC = [self.storyboard instantiateViewControllerWithIdentifier:@"pageVC"];
+        //fix bug:ios11以下，push到UIPageVC布局下移
+        pageVC.automaticallyAdjustsScrollViewInsets = NO;
         pageVC.dataSource = self;
         pageVC.view.backgroundColor = [UIColor whiteColor];
         [pageVC setViewControllers:@[[PDFViewController pdfViewControllerForIndex:0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
