@@ -24,6 +24,7 @@
 
 
 static NSString *const pdfName = @"rooster.pdf";
+static NSString *const pdfPWD = @"123456";
 
 CGContextRef myConctext(size_t width, size_t height){
 
@@ -60,7 +61,9 @@ UIImage *customImage(void){
 }
 
 @interface ViewController ()
-
+{
+    CGPDFDocumentRef _pdfDoc;
+}
 @property (weak, nonatomic) IBOutlet UIButton *pdfBtn;
 @property (nonatomic, strong) LTSPDFView *pdfView;
 @end
@@ -69,7 +72,9 @@ UIImage *customImage(void){
 
 
 @implementation ViewController
-
+- (void)dealloc{
+    CGPDFDocumentRelease(_pdfDoc);
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -110,7 +115,7 @@ UIImage *customImage(void){
         NSLog(@"making pdf, image isn't exist.");
         return;
     }
-    [LTSPDFMaker createPDFWithImageData:imageData pdfsize:CGSizeMake(SCREEN_WIDTH, 300) outputFileName:pdfName password:nil imageType:PDFMakerImageTypeJPG];
+    [LTSPDFMaker createPDFWithImageData:imageData pdfsize:CGSizeMake(SCREEN_WIDTH, 300) outputFileName:pdfName password:pdfPWD imageType:PDFMakerImageTypeJPG];
     [self addPDFView];
 }
 
@@ -178,9 +183,23 @@ UIImage *customImage(void){
     
     CFURLRef pdfURL = CFURLCreateWithFileSystemPath(NULL, (__bridge CFStringRef)pdfPath, kCFURLPOSIXPathStyle, NO);
     CGPDFDocumentRef pdfDoc = CGPDFDocumentCreateWithURL(pdfURL);
+    _pdfDoc = pdfDoc;
     if (pdfDoc == NULL) {
-        NSLog(@"something wrong occur when making pdf document.");
+        NSLog(@"can't open the pdf document");
+        CFRelease(pdfURL);
         return;
+    }
+    
+    
+    
+    //check the document whether is encrypted or not.
+    if (CGPDFDocumentIsEncrypted(pdfDoc)) {
+        if (!CGPDFDocumentUnlockWithPassword(pdfDoc, [pdfPWD UTF8String])) {
+            NSLog(@"can't unlock the pdf document.");
+            CFRelease(pdfURL);
+            CGPDFDocumentRelease(pdfDoc);
+            return;
+        }
     }
     
     if (_pdfView) {
@@ -192,6 +211,9 @@ UIImage *customImage(void){
     if (view) {
         [self.view addSubview:view];
     }
+    
+    //release
+    CFRelease(pdfURL);
 }
 
 
