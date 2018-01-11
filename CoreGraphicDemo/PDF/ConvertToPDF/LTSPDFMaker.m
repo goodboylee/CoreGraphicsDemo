@@ -53,6 +53,17 @@ void createPDF(CFDataRef imageData, CGRect pdfRect, CFStringRef filePath, CFStri
     CGContextRef pdfContext = CGPDFContextCreateWithURL(fileURL, &pdfRect, auxInfo);
     if (pdfContext == NULL) {
         NSLog(@"create pdf context fail.");
+        //release
+        CFRelease(imageData);
+        CFRelease(filePath);
+        if (pdfPWD) {
+            CFRelease(pdfPWD);
+        }
+        CFRelease(fileURL);
+        CFRelease(auxInfo);
+        CFRelease(rectData);
+        CFRelease(pageInfo);
+        CGContextRelease(pdfContext);
         return;
     }
     //begin to make pdf
