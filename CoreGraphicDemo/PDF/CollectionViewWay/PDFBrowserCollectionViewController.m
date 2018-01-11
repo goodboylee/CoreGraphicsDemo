@@ -9,7 +9,7 @@
 #import "PDFBrowserCollectionViewController.h"
 
 //views
-#import "PDFView.h"
+#import "LTSPDFView.h"
 #import "PDFCollectionViewCell.h"
 
 #define NAVBAR_HEIGHT       self.navigationController.navigationBar.frame.size.height
@@ -72,7 +72,7 @@ static NSString * const reuseIdentifier = @"PDFCollectionViewCell";
     size_t totalNumber = CGPDFDocumentGetNumberOfPages(tempDoc);
     NSMutableArray <PDFView *>*tempPdfArr = [NSMutableArray array];
     for (size_t i = 1; i <= totalNumber; i++) {
-        PDFView *pdfView = [[PDFView alloc] initWithFrame:(CGRect){CGPointZero, ITEM_SIZE} pdfDocument:tempDoc pageNumber:i];
+        PDFView *pdfView = [[LTSPDFView alloc] initWithFrame:(CGRect){CGPointZero, ITEM_SIZE} pdfDocument:tempDoc pageNumber:i];
         [tempPdfArr addObject:pdfView];
     }
     self.views = [tempPdfArr copy];

@@ -17,7 +17,13 @@
 #import "TransparentView.h"
 #import "SubImageView.h"
 #import "LayerView.h"
+#import "LTSPDFView.h"
 
+//data
+#import "LTSPDFMaker.h"
+
+
+static NSString *const pdfName = @"rooster.pdf";
 
 CGContextRef myConctext(size_t width, size_t height){
 
@@ -55,6 +61,8 @@ UIImage *customImage(void){
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *pdfBtn;
+@property (nonatomic, strong) LTSPDFView *pdfView;
 @end
 
 
@@ -92,6 +100,19 @@ UIImage *customImage(void){
     
 }
 
+- (IBAction)makePDFFile:(id)sender {
+    
+    //make pdf
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"rooster" ofType:@"jpg"];
+    NSData *imageData = [NSData dataWithContentsOfFile:imagePath];
+
+    if (imageData == nil) {
+        NSLog(@"making pdf, image isn't exist.");
+        return;
+    }
+    [LTSPDFMaker createPDFWithImageData:imageData pdfsize:CGSizeMake(SCREEN_WIDTH, 300) outputFileName:pdfName password:nil imageType:PDFMakerImageTypeJPG];
+    [self addPDFView];
+}
 
 - (void)configureView{
     if (_type == UsageTypeEORule) {
@@ -108,6 +129,8 @@ UIImage *customImage(void){
         [self addSubimageView];
     }else if (_type == UsageTypeCGLayer){
         [self addLayerView];
+    }else if (_type == UsageTypeConvertImageToPDF){
+        _pdfBtn.hidden = NO;
     }
 }
 
@@ -144,6 +167,31 @@ UIImage *customImage(void){
 - (void)addLayerView{
     LayerView *view = [[LayerView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, SCREEN_HEIGHT - 100)];
     [self.view addSubview:view];
+}
+- (void)addPDFView{
+    
+    NSString *pdfPath = [LTSPDFMaker pdfPathWithFileName:pdfName];
+    
+    //使用NSURL构建的CFURLRef对象不可用
+//    NSURL *url = [NSURL URLWithString:pdfPath];
+//    CFURLRef pdfURL = (__bridge_retained CFURLRef)url;
+    
+    CFURLRef pdfURL = CFURLCreateWithFileSystemPath(NULL, (__bridge CFStringRef)pdfPath, kCFURLPOSIXPathStyle, NO);
+    CGPDFDocumentRef pdfDoc = CGPDFDocumentCreateWithURL(pdfURL);
+    if (pdfDoc == NULL) {
+        NSLog(@"something wrong occur when making pdf document.");
+        return;
+    }
+    
+    if (_pdfView) {
+        [_pdfView removeFromSuperview];
+        _pdfView = nil;
+    }
+    LTSPDFView *view = [[LTSPDFView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 300) pdfDocument:pdfDoc pageNumber:1];
+    _pdfView = view;
+    if (view) {
+        [self.view addSubview:view];
+    }
 }
 
 

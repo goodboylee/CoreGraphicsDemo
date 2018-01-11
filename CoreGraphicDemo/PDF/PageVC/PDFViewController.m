@@ -8,7 +8,7 @@
 
 #import "PDFViewController.h"
 #import "PDFDataSource.h"
-#import "PDFView.h"
+#import "LTSPDFView.h"
 
 #define NAVBAR_HEIGHT       self.navigationController.navigationBar.frame.size.height
 #define STATUSBAR_HEIGHT    [UIApplication sharedApplication].statusBarFrame.size.height
@@ -18,7 +18,7 @@
 {
     UIScrollView *_sclView;
     NSInteger _index;
-    PDFView *_pdfView;
+    LTSPDFView *_pdfView;
 }
 @end
 
@@ -38,9 +38,8 @@
 }
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    NSLog(@"viewDidLayoutSubviews frame h:%f, bar H: %f", STATUSBAR_HEIGHT, NAVBAR_HEIGHT);
-    NSLog(@"self view frame : %@", NSStringFromCGRect(self.view.frame));
-    _sclView.frame = (CGRect){{0, 64}, ITEM_SIZE};
+
+    _sclView.frame = (CGRect){{0, NAVBAR_HEIGHT + STATUSBAR_HEIGHT}, ITEM_SIZE};
     _pdfView.frame = _sclView.bounds;
 }
 
@@ -53,7 +52,7 @@
     _sclView = tempScl;
     [self.view addSubview:tempScl];
     
-    PDFView *pdfView = [PDFINSTANCE pdfViewForPage:_index];
+    LTSPDFView *pdfView = [PDFINSTANCE pdfViewForPage:_index];
     pdfView.frame = tempScl.bounds;
     _pdfView = pdfView;
     [_sclView addSubview:pdfView];

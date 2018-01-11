@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #define PDFINSTANCE [PDFDataSource shareInstance]
-@class PDFView;
+@class LTSPDFView;
 @interface PDFDataSource : NSObject
 
 + (instancetype)shareInstance;
-- (PDFView *)pdfViewForPage:(NSInteger)page;
+- (LTSPDFView *)pdfViewForPage:(NSInteger)page;
 - (NSInteger)totalPages;
 @end

@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD03194E2006E75E00466205 /* LTSPDFMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = AD03194D2006E75E00466205 /* LTSPDFMaker.m */; };
+		AD031954200714E100466205 /* LTSPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD031953200714E100466205 /* LTSPDFView.m */; };
 		AD2D968B1FFC754B008BC598 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2D968A1FFC754B008BC598 /* TransparentView.m */; };
 		AD2D968F1FFCCB6D008BC598 /* SubImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD2D968E1FFCCB6D008BC598 /* SubImageView.m */; };
 		AD4CE0251FFF03CE0096D2D3 /* LayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4CE0241FFF03CE0096D2D3 /* LayerView.m */; };
 		AD4CE0271FFF65870096D2D3 /* Blocks 编程要点.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AD4CE0261FFF65860096D2D3 /* Blocks 编程要点.pdf */; };
-		AD4CE02B1FFF675D0096D2D3 /* PDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4CE02A1FFF675D0096D2D3 /* PDFView.m */; };
 		AD633B941FE1131100000420 /* BasicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD633B931FE1131100000420 /* BasicTableViewController.m */; };
 		AD633B971FE113E700000420 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD633B961FE113E700000420 /* MainTableViewController.m */; };
 		AD633B9F1FE1289500000420 /* ClipVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = AD633B9E1FE1289500000420 /* ClipVIew.m */; };
@@ -36,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD03194C2006E75E00466205 /* LTSPDFMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTSPDFMaker.h; sourceTree = "<group>"; };
+		AD03194D2006E75E00466205 /* LTSPDFMaker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTSPDFMaker.m; sourceTree = "<group>"; };
+		AD031952200714E100466205 /* LTSPDFView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTSPDFView.h; sourceTree = "<group>"; };
+		AD031953200714E100466205 /* LTSPDFView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LTSPDFView.m; sourceTree = "<group>"; };
 		AD2D96891FFC754B008BC598 /* TransparentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransparentView.h; sourceTree = "<group>"; };
 		AD2D968A1FFC754B008BC598 /* TransparentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransparentView.m; sourceTree = "<group>"; };
 		AD2D968D1FFCCB6D008BC598 /* SubImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubImageView.h; sourceTree = "<group>"; };
@@ -43,8 +48,6 @@
 		AD4CE0231FFF03CE0096D2D3 /* LayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LayerView.h; sourceTree = "<group>"; };
 		AD4CE0241FFF03CE0096D2D3 /* LayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LayerView.m; sourceTree = "<group>"; };
 		AD4CE0261FFF65860096D2D3 /* Blocks 编程要点.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Blocks 编程要点.pdf"; sourceTree = "<group>"; };
-		AD4CE0291FFF675D0096D2D3 /* PDFView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PDFView.h; sourceTree = "<group>"; };
-		AD4CE02A1FFF675D0096D2D3 /* PDFView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PDFView.m; sourceTree = "<group>"; };
 		AD633B921FE1131100000420 /* BasicTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicTableViewController.h; sourceTree = "<group>"; };
 		AD633B931FE1131100000420 /* BasicTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicTableViewController.m; sourceTree = "<group>"; };
 		AD633B951FE113E700000420 /* MainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
@@ -99,6 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD2D84812005F026000EB386 /* ConvertToPDF */ = {
+			isa = PBXGroup;
+			children = (
+				AD03194C2006E75E00466205 /* LTSPDFMaker.h */,
+				AD03194D2006E75E00466205 /* LTSPDFMaker.m */,
+			);
+			path = ConvertToPDF;
+			sourceTree = "<group>";
+		};
 		AD2D96881FFC74FB008BC598 /* Transparent Layer */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,8 +152,9 @@
 		AD4CE0281FFF65960096D2D3 /* PDF */ = {
 			isa = PBXGroup;
 			children = (
-				AD4CE0291FFF675D0096D2D3 /* PDFView.h */,
-				AD4CE02A1FFF675D0096D2D3 /* PDFView.m */,
+				AD031952200714E100466205 /* LTSPDFView.h */,
+				AD031953200714E100466205 /* LTSPDFView.m */,
+				AD2D84812005F026000EB386 /* ConvertToPDF */,
 				AD8D642E200449DD00D6A9E7 /* PageVC */,
 				AD34C2D420030C0C009634DB /* CollectionViewWay */,
 			);
@@ -333,11 +346,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD7F93751FE295240039D630 /* GradientView.m in Sources */,
-				AD4CE02B1FFF675D0096D2D3 /* PDFView.m in Sources */,
 				AD7F93721FE26C740039D630 /* ShadowView.m in Sources */,
 				AD633B941FE1131100000420 /* BasicTableViewController.m in Sources */,
 				AD7F93791FE298C70039D630 /* ShapeGradientView.m in Sources */,
 				AD7F936E1FE24A870039D630 /* PatternView.m in Sources */,
+				AD031954200714E100466205 /* LTSPDFView.m in Sources */,
 				AD922EEE1FD93AB400F84F6D /* MyView.m in Sources */,
 				AD633B9F1FE1289500000420 /* ClipVIew.m in Sources */,
 				ADD695AB1FE3A96F00E613CB /* GradientListTableViewController.m in Sources */,
@@ -352,6 +365,7 @@
 				ADD1F7FA1FD912DA00FD23F2 /* AppDelegate.m in Sources */,
 				AD4CE0251FFF03CE0096D2D3 /* LayerView.m in Sources */,
 				AD2D968B1FFC754B008BC598 /* TransparentView.m in Sources */,
+				AD03194E2006E75E00466205 /* LTSPDFMaker.m in Sources */,
 				AD8D64372004557200D6A9E7 /* PDFDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

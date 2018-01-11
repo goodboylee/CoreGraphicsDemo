@@ -7,7 +7,7 @@
 //
 
 #import "PDFDataSource.h"
-#import "PDFView.h"
+#import "LTSPDFView.h"
 
 static PDFDataSource *shareObject = nil;
 
@@ -15,7 +15,7 @@ static PDFDataSource *shareObject = nil;
 {
     CGPDFDocumentRef _pdfDocument;
 }
-@property (nonatomic, strong) NSArray <PDFView *>*views;
+@property (nonatomic, strong) NSArray <LTSPDFView *>*views;
 @end
 
 @implementation PDFDataSource
@@ -61,15 +61,15 @@ static PDFDataSource *shareObject = nil;
     
     //get the total pdf page's number
     size_t totalNumber = CGPDFDocumentGetNumberOfPages(tempDoc);
-    NSMutableArray <PDFView *>*tempPdfArr = [NSMutableArray array];
+    NSMutableArray <LTSPDFView *>*tempPdfArr = [NSMutableArray array];
     for (size_t i = 1; i <= totalNumber; i++) {
-        PDFView *pdfView = [[PDFView alloc] initWithFrame:CGRectZero pdfDocument:tempDoc pageNumber:i];
+        LTSPDFView *pdfView = [[LTSPDFView alloc] initWithFrame:CGRectZero pdfDocument:tempDoc pageNumber:i];
         [tempPdfArr addObject:pdfView];
     }
     self.views = [tempPdfArr copy];
 }
 #pragma mark - public mehtods
-- (PDFView *)pdfViewForPage:(NSInteger)page{
+- (LTSPDFView *)pdfViewForPage:(NSInteger)page{
     NSParameterAssert(page >= 0 && page < _views.count);
     
     return _views[page];

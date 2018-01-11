@@ -88,9 +88,26 @@
                     <view key="view" contentMode="scaleToFill" id="UX4-3l-DSE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMF-VZ-MDL">
+                                <rect key="frame" x="142.5" y="30" width="90" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.99947337380000001" blue="0.7792748169" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="生成PDF文件"/>
+                                <connections>
+                                    <action selector="makePDFFile:" destination="939-Dr-EDM" eventType="touchUpInside" id="MDD-lo-GWc"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bMF-VZ-MDL" firstAttribute="centerX" secondItem="UX4-3l-DSE" secondAttribute="centerX" id="LRD-rX-VeF"/>
+                            <constraint firstItem="bMF-VZ-MDL" firstAttribute="top" secondItem="S1T-Eh-K87" secondAttribute="top" constant="10" id="dtT-mi-QRN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="S1T-Eh-K87"/>
                     </view>
+                    <connections>
+                        <outlet property="pdfBtn" destination="bMF-VZ-MDL" id="QYW-EN-Tsh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tvo-v3-lp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

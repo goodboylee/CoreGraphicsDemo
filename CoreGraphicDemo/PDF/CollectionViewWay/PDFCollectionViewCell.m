@@ -7,7 +7,7 @@
 //
 
 #import "PDFCollectionViewCell.h"
-#import "PDFView.h"
+#import "LTSPDFView.h"
 
 @interface PDFCollectionViewCell()<UIScrollViewDelegate>
 

@@ -1,20 +1,20 @@
 //
-//  PDFView.m
+//  LTSPDFView.m
 //  CoreGraphicDemo
 //
-//  Created by lotus on 2018/1/5.
+//  Created by lotus on 2018/1/11.
 //  Copyright © 2018年 lotus. All rights reserved.
 //
 
-#import "PDFView.h"
+#import "LTSPDFView.h"
 
-@interface PDFView()
+@interface LTSPDFView()
 {
     CGPDFDocumentRef _docment;
     size_t _pageNumber;
 }
 @end;
-@implementation PDFView
+@implementation LTSPDFView
 
 - (id)initWithFrame:(CGRect)frame pdfDocument:(CGPDFDocumentRef)pdfDocument pageNumber:(size_t)pageNumber{
     self = [super initWithFrame:frame];
@@ -52,6 +52,9 @@
     CGContextClipToRect(context, CGPDFPageGetBoxRect(page, kCGPDFMediaBox));
     CGContextDrawPDFPage(context, page);
     CGContextRestoreGState(context);
+    
+    
+    
 }
 
 - (CGContextRef)createContextWithRect:(CGRect)rect{
@@ -67,13 +70,4 @@
     }
     return context;
 }
-
 @end
-
-
-
-
-
-
-
-
