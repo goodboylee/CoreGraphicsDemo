@@ -20,6 +20,9 @@ static PDFDataSource *shareObject = nil;
 
 @implementation PDFDataSource
 
+- (void)dealloc{
+    CGPDFDocumentRelease(_pdfDocument);
+}
 + (instancetype)shareInstance{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -54,9 +57,21 @@ static PDFDataSource *shareObject = nil;
     CGPDFDocumentRef tempDoc = CGPDFDocumentCreateWithURL(pdfURL);
     if (tempDoc == NULL) {
         NSLog(@"the pdf docment is not exist.");
+        CFRelease(pdfURL);
         return;
     }
     _pdfDocument = tempDoc;
+    
+    //check the document whether is encrypted or not.
+    if (CGPDFDocumentIsEncrypted(tempDoc)) {
+        if (!CGPDFDocumentUnlockWithPassword(tempDoc, " ")) {//the last argument, should input the correct password.
+            NSLog(@"can't unlock the pdf document.");
+            CFRelease(pdfURL);
+            CGPDFDocumentRelease(tempDoc);
+            return;
+        }
+    }
+    
     CFRelease(pdfURL);
     
     //get the total pdf page's number
