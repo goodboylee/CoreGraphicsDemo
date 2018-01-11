@@ -190,8 +190,6 @@ UIImage *customImage(void){
         return;
     }
     
-    
-    
     //check the document whether is encrypted or not.
     if (CGPDFDocumentIsEncrypted(pdfDoc)) {
         if (!CGPDFDocumentUnlockWithPassword(pdfDoc, [pdfPWD UTF8String])) {

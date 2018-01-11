@@ -112,8 +112,16 @@ NSString *pdfFilePath(NSString *fileName){
     NSString *path = pdfFilePath(fileName);
     CFStringRef filePath = (__bridge_retained CFStringRef)path;
     
-    //pdf rect
-    CGRect rect = (CGRect){CGPointZero, pdfsize};
+    //get the pdf size
+    CGRect rect;
+    if (CGSizeEqualToSize(pdfsize, CGSizeZero)) {
+        UIImage *image = [UIImage imageWithData:imageData];
+        rect = (CGRect){CGPointZero, image.size};
+    }else{
+        //pdf rect
+        rect = (CGRect){CGPointZero, pdfsize};
+    }
+    
     
     createPDF(imgData, rect, filePath, passWord, imageType);
 }

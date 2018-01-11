@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, PDFMakerImageType){
 
  @param imageData 图片数据
  @param fileName 最终保存的pdf文件名
- @param pdfsize pdf文件大小
+ @param pdfsize pdf文件大小,如果为CGSizeZero，则使用图片的大小作为pdf大小
  @param pwd pdf密码
  @param imageType 原始图片类型
  */
