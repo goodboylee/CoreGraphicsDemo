@@ -25,6 +25,7 @@ static const CGFloat patternCellH = 20;
     
 }
 
+#pragma mark - color pattern
 - (void)drawColorPatternWithRect:(CGRect)rect{
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGFloat alpha = 1;
@@ -53,6 +54,29 @@ static const CGFloat patternCellH = 20;
     CGContextRestoreGState(context);
 }
 
+void myDrawPattern(void *info, CGContextRef context){
+    
+    CGFloat w = 5;
+    
+    CGRect rect1 = CGRectMake(0, 0, w, w);
+    CGRect rect2 = CGRectMake(w, 0, w, w);
+    CGRect rect3 = CGRectMake(0, w, w, w);
+    CGRect rect4 = CGRectMake(w, w, w, w);
+    
+    CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
+    CGContextFillRect(context, CGRectMake(0, 0, patternCellW, patternCellH));
+    CGContextSetRGBFillColor(context, 1, 0, 0, 0.5);
+    CGContextFillRect(context, rect1);
+    CGContextSetRGBFillColor(context, 0, 1, 1, 0.5);
+    CGContextFillRect(context, rect2);
+    CGContextSetRGBFillColor(context, 0, 0, 1, 0.5);
+    CGContextFillRect(context, rect3);
+    CGContextSetRGBFillColor(context, 0.5, 0.5, 0.5, 0.5);
+    CGContextFillRect(context, rect4);
+}
+
+#pragma mark - stencil pattern
+
 - (void)drawStencilPatternWithRect:(CGRect)rect{
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -78,7 +102,6 @@ static const CGFloat patternCellH = 20;
                               &callbacks);
     CGContextSetFillPattern (context, pattern, color);
     CGPatternRelease (pattern);
-    //    CGContextFillRect (context,CGRectMake (0,0,PSIZE*20,PSIZE*20));
     CGContextFillRect(context, rect);
 }
 
@@ -102,26 +125,7 @@ static void drawStar (void *info, CGContextRef myContext)
     CGContextFillPath(myContext);
 }
 
-void myDrawPattern(void *info, CGContextRef context){
-    
-    CGFloat w = 5;
-    
-    CGRect rect1 = CGRectMake(0, 0, w, w);
-    CGRect rect2 = CGRectMake(w, 0, w, w);
-    CGRect rect3 = CGRectMake(0, w, w, w);
-    CGRect rect4 = CGRectMake(w, w, w, w);
-    
-    CGContextSetFillColorWithColor(context, [UIColor yellowColor].CGColor);
-    CGContextFillRect(context, CGRectMake(0, 0, patternCellW, patternCellH));
-    CGContextSetRGBFillColor(context, 1, 0, 0, 0.5);
-    CGContextFillRect(context, rect1);
-    CGContextSetRGBFillColor(context, 0, 1, 1, 0.5);
-    CGContextFillRect(context, rect2);
-    CGContextSetRGBFillColor(context, 0, 0, 1, 0.5);
-    CGContextFillRect(context, rect3);
-    CGContextSetRGBFillColor(context, 0.5, 0.5, 0.5, 0.5);
-    CGContextFillRect(context, rect4);
-}
+
 @end
 
 
