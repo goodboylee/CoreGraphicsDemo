@@ -78,7 +78,7 @@
         }];
         [self.navigationController pushViewController:pageVC animated:YES];
         return;
-    }else if (indexPath.row == 10){
+    }else if (indexPath.row == 9){
         vc.type = UsageTypeConvertImageToPDF;
     }
     [self.navigationController pushViewController:vc animated:YES];
