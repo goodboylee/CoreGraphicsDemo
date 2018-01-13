@@ -100,7 +100,7 @@
 
 
 /**
- translate the context the draw the CGLayer object.
+ translate the context to draw the CGLayer object.
  */
 - (void)drawFlag2WithRect:(CGRect)rect{
     CGContextRef context = UIGraphicsGetCurrentContext();
