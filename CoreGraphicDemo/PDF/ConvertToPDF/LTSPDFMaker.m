@@ -30,8 +30,6 @@ void drawPDFContent(CGContextRef context, CGRect rect, CFDataRef imageData, PDFM
 
 void createPDF(CFDataRef imageData, CGRect pdfRect, CFStringRef filePath, CFStringRef pdfPWD, PDFMakerImageType imageType){
     
-    //使用NSURL构建的CFURLRef对象不可用
-    //get the file url
     CFURLRef fileURL = CFURLCreateWithFileSystemPath(NULL, filePath, kCFURLPOSIXPathStyle, NO);
     
     //auxiliary info

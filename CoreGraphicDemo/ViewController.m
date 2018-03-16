@@ -177,10 +177,6 @@ UIImage *customImage(void){
     
     NSString *pdfPath = [LTSPDFMaker pdfPathWithFileName:pdfName];
     
-    //使用NSURL构建的CFURLRef对象不可用
-//    NSURL *url = [NSURL URLWithString:pdfPath];
-//    CFURLRef pdfURL = (__bridge_retained CFURLRef)url;
-    
     CFURLRef pdfURL = CFURLCreateWithFileSystemPath(NULL, (__bridge CFStringRef)pdfPath, kCFURLPOSIXPathStyle, NO);
     CGPDFDocumentRef pdfDoc = CGPDFDocumentCreateWithURL(pdfURL);
     _pdfDoc = pdfDoc;
